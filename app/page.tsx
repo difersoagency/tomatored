@@ -1,8 +1,8 @@
 import React from 'react'
 // import Header from './_component/Header'
-import Image from 'next/image'
+// import Image from 'next/image'
 // import Trial from '@/public/images/try.webp'
-import Logo from '@/public/images/logo_light.png'
+// import Logo from '@/public/images/logo_light.png'
 import PhotoCarousel from './_component/PhotoSlider'
 
 export default function page() {
