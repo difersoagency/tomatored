@@ -1,68 +1,45 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-// import Trial from '@/public/images/try.webp'
 
-const PhotoCarousel: React.FC = () => {
-  const photos = [
-    {
-      src: "/images/try.webp",
-      link: "/page1",
-      alt: "Foto 1",
-    },
-    {
-      src: "/images/try2.webp",
-      link: "/page2",
-      alt: "Foto 2",
-    },
-    {
-      src: "/images/try3.webp",
-      link: "/page3",
-      alt: "Foto 3",
-    },
-  ];
+const images = [
+  "/images/try.webp",
+  "/images/try2.webp",
+  "/images/try3.webp",
+  "/images/try.webp",
+  "/images/try2.webp",
+  "/images/try3.webp",
+  "/images/try.webp",
+  "/images/try2.webp",
+  "/images/try3.webp",
+];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
-    }, 3000); // Ganti gambar setiap 3 detik
-
-    return () => clearInterval(interval); // Bersihkan interval saat komponen unmount
-  }, [photos.length]);
-
+export default function PhotoSlider() {
   return (
-    <div style={{ textAlign: "center" }}>
-      {photos.map((photo, index) => (
-        <div
-          key={index}
-          style={{
-            display: index === currentIndex ? "block" : "none",
-          }}
-        >
-          <Link href={photo.link}>
-
-            <Image
-            src={photo.src}
-            width={1000}
-            height={1000}
-            alt={photo.alt}
-            className=' mt-auto w-[30vw] h-[20vw]  object-cover'
-            />
-              {/* <img
-                src={photo.src}
-                alt={photo.alt}
-                style={{ maxWidth: "100%", height: "auto", cursor: "pointer" }}
-              /> */}
-          
-          </Link>
-        </div>
-      ))}
+    <div className="w-full h-[30vh] overflow-hidden ">
+      <motion.div
+        className="flex"
+        animate={{ x: ["0%", "-100%"] }} // Animasi perpindahan
+        transition={{
+          repeat: Infinity, // Ulangi terus
+          duration: 20, // Waktu untuk menyelesaikan 1 putaran
+          ease: "linear", // Gerakan linear tanpa jeda
+        }}
+      >
+        {/* Gandakan gambar agar looping lebih mulus */}
+        {images.concat(images).map((img, index) => (
+          <Image
+          width={1000}
+          height={1000}
+            key={index}
+            src={img}
+            alt={`Slide ${index}`}
+            className="w-[30vw] h-full object-cover"
+          />
+        ))}
+      </motion.div>
     </div>
   );
-};
-
-export default PhotoCarousel;
+}
