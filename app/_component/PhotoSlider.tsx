@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
 
 const images = [
   "/images/try.webp",
@@ -17,29 +17,35 @@ const images = [
 ];
 
 export default function PhotoSlider() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      const sliderWidth = sliderRef.current.scrollWidth / 2; // Lebar konten slider
+      gsap.to(sliderRef.current, {
+        x: -sliderWidth, // Geser ke kiri hingga -100% dari konten
+        duration: 100, // Waktu untuk satu siklus animasi
+        repeat: -1, // Ulangi terus-menerus
+        ease: "linear", // Animasi linear
+      });
+    }
+  }, []);
+
   return (
-    <div className="w-full h-[30vh] overflow-hidden ">
-      <motion.div
-        className="flex"
-        animate={{ x: ["0%", "-100%"] }} // Animasi perpindahan
-        transition={{
-          repeat: Infinity, // Ulangi terus
-          duration: 20, // Waktu untuk menyelesaikan 1 putaran
-          ease: "linear", // Gerakan linear tanpa jeda
-        }}
-      >
-        {/* Gandakan gambar agar looping lebih mulus */}
+    <div className="w-full h-[40vh] overflow-hidden">
+      <div ref={sliderRef} className="flex">
+        {/* Gandakan gambar agar animasi loop lebih mulus */}
         {images.concat(images).map((img, index) => (
           <Image
-          width={1000}
-          height={1000}
+            width={1000}
+            height={1000}
             key={index}
             src={img}
             alt={`Slide ${index}`}
-            className="w-[30vw] h-full object-cover"
+            className="w-full h-[50vh] object-cover"
           />
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
