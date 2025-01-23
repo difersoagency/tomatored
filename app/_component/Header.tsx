@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import TransitionLink from "./TransitionLink";
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +24,7 @@ const Header = () => {
             ease: "power4.out",
           })
           .fromTo(
-            linksRef.current?.children,
+            linksRef.current ? Array.from(linksRef.current.children) : [],
             { opacity: 0, y: 20 },
             {
               opacity: 1,
@@ -37,7 +39,7 @@ const Header = () => {
       } else {
         // Animasi menutup menu
         gsap.timeline()
-          .to(linksRef.current?.children, {
+          .to(linksRef.current ? Array.from(linksRef.current.children) : [], {
             opacity: 0,
             y: -20,
             duration: 0.3,
@@ -87,16 +89,18 @@ const Header = () => {
           </div>
 
           <div>
-            <a
-              href="https://www.instagram.com/tomatored.photo/"
-              target="_blank"
+            {/* <a
+              href="/portfolio "
+
               className={`text-[1.5vw] smooch tracking-[0.1rem] ${
                 isMenuOpen ? "text-secondary" : "text-primary"
               } cursor-pointer uppercase`}
               rel="noopener noreferrer"
             >
-              Instagram.
-            </a>
+              Portfolio
+            </a> */}
+
+            <TransitionLink newFunc={()=>{}} position="outside" isMenu={isMenuOpen} href="/portfolio" label="Portfolio"/>
           </div>
         </div>
       </header>
@@ -111,26 +115,14 @@ const Header = () => {
         <nav>
           <ul ref={linksRef} className="space-y-6 text-center">
             <li className="text-[2vw]">
-              <a
-                href="#section1"
-                className="font-climate-crisis text-[4vw] uppercase"
-                onClick={toggleMenu}
-              >
-                About
-              </a>
+              <TransitionLink newFunc={toggleMenu} position="banner" isMenu={isMenuOpen} href="/" label="Home"/>
+            </li>
+            <li className="text-[2vw]">
+              <TransitionLink newFunc={toggleMenu} position="banner" isMenu={isMenuOpen} href="/about" label="about"/>
             </li>
             <li className="text-[2vw]">
               <a
-                href="#section2"
-                className="font-climate-crisis text-[4vw] uppercase"
-                onClick={toggleMenu}
-              >
-                Works
-              </a>
-            </li>
-            <li className="text-[2vw]">
-              <a
-                href="#section3"
+                href="/contact"
                 className="font-climate-crisis text-[4vw] uppercase"
                 onClick={toggleMenu}
               >

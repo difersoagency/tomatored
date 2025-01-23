@@ -2,7 +2,7 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
-import Gallery from "./Gallery";
+import Gallery from "../portfolio/components/Gallery";
 
 export default function ScrollSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
