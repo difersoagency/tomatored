@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "./_component/Header";
 import CustomCursor from "./_component/CustomCursor";
 import localFont from 'next/font/local'
+import Footer from "./_component/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,13 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="cursor-none">
+    <html lang="en" className="">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header/>
-        <CustomCursor/>
+        {/* <CustomCursor/> */}
         {children}
+        <Footer/>
       </body>
     </html>
   );

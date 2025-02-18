@@ -12,7 +12,7 @@ export default function page() {
 
   return (
     <>
-      <div className="overflow-y-hidden">
+      <div className="">
       <Banner/>
 
       </div>

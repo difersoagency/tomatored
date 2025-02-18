@@ -89,17 +89,10 @@ const Header = () => {
           </div>
 
           <div>
-            {/* <a
-              href="/portfolio "
+            <p className="font-climate-crisis text-primary uppercase text-[1.5vw] text-right leading-[1.5vw]">Tomato <br /> Red</p>
+          </div>
 
-              className={`text-[1.5vw] smooch tracking-[0.1rem] ${
-                isMenuOpen ? "text-secondary" : "text-primary"
-              } cursor-pointer uppercase`}
-              rel="noopener noreferrer"
-            >
-              Portfolio
-            </a> */}
-
+          <div>
             <TransitionLink newFunc={()=>{}} position="outside" isMenu={isMenuOpen} href="/portfolio" label="Portfolio"/>
           </div>
         </div>
@@ -121,14 +114,9 @@ const Header = () => {
               <TransitionLink newFunc={toggleMenu} position="banner" isMenu={isMenuOpen} href="/about" label="about"/>
             </li>
             <li className="text-[2vw]">
-              <a
-                href="/contact"
-                className="font-climate-crisis text-[4vw] uppercase"
-                onClick={toggleMenu}
-              >
-                Contact
-              </a>
+              <TransitionLink newFunc={toggleMenu} position="banner" isMenu={isMenuOpen} href="/contact" label="contact"/>
             </li>
+           
           </ul>
         </nav>
       </div>

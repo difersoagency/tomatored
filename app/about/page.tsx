@@ -1,9 +1,10 @@
 import React from 'react'
+import Marquee from '../_component/Marque'
 
 export default function page() {
   return (
     <section className='min-h-screen bg-secondary'>
-        <h1>About Page</h1>
+        <Marquee/>
     </section>
   )
 }
