@@ -4,6 +4,7 @@ import React, { forwardRef } from "react";
 import Marquee from "./Marque";
 import GridImage from "./GridImage";
 import Image from "next/image";
+import ViewMarquee from "./ViewMarquee";
 
 const Banner = forwardRef<HTMLElement>((_, ref) => {
   return (
@@ -24,13 +25,17 @@ const Banner = forwardRef<HTMLElement>((_, ref) => {
               Vibrant Indonesia-based production house, offering full-scale 
               production and representing creative crew.
             </h1>
-            <Image src="/images/star.png" width={500} height={500} alt="arrow" className="w-[5vw] animate-spin2 ml-auto mr-[11vw] mt-[-1vw]"/>
+            <Image src="/images/star.png" width={500} height={500} alt="arrow" className="w-[5vw] animate-spin ml-auto mr-[11vw] mt-[-1vw]"/>
           </div>
           
         </div>
         
         <div>
           <GridImage/>
+        </div>
+
+        <div className="px-[6vw] py-[4vw] bg-[#7584EC]">
+          <ViewMarquee/>
         </div>
       </div>
 

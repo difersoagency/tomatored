@@ -48,7 +48,7 @@ export default function GridImage() {
                 width={500}
                 height={500}
                 alt="Donat"
-                className="w-[2vw] ml-auto animate-spin2"
+                className="w-[2vw] ml-auto animate-spin"
               />
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function GridImage() {
                 width={500}
                 height={500}
                 alt="Donat"
-                className="w-[4vw] mr-[3vw] animate-spin2"
+                className="w-[4vw] mr-[3vw] animate-spin"
               />
               <Image
                 src="/images/burger.png"
